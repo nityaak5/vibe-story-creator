@@ -1,0 +1,5 @@
+pandas
+chromadb
+sentence-transformers
+streamlit
+huggingface_hub

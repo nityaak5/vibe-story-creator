@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Streamlit cache
+.streamlit/
+
+# ChromaDB persistence
+db/
+chroma_db/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Secrets
+config.py
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db 
