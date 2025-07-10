@@ -1,10 +1,14 @@
-from config import GROQ_API_KEY
+import streamlit as st
 import requests
+
+#instead of config, we use st.secrets
+
+groq_api_key = st.secrets["GROQ_API_KEY"]
 
 def groq_llm(prompt, model="llama3-8b-8192"):
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
-        "Authorization": f"Bearer {GROQ_API_KEY}",
+        "Authorization": f"Bearer {groq_api_key}",
         "Content-Type": "application/json"
     }
     data = {

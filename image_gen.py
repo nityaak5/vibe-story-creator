@@ -1,10 +1,11 @@
-from config import HF_TOKEN
 from huggingface_hub import InferenceClient
+import streamlit as st
+hf_token = st.secrets["HF_TOKEN"]
 
 def generate_image(prompt):
     client = InferenceClient(
         provider="nebius",  # or omit for default provider
-        api_key=HF_TOKEN,
+        api_key=hf_token,
     )
     image = client.text_to_image(
         prompt,
