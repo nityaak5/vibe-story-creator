@@ -9,11 +9,8 @@ class PineconeVectorStore:
     Uses Pinecone cloud index and sentence-transformers for embeddings.
     """
     def __init__(self):
-        pinecone.init(
-            api_key=st.secrets["PINECONE_API_KEY"],
-            environment=st.secrets["PINECONE_ENV"]
-        )
-        self.index = pinecone.Index(st.secrets["PINECONE_INDEX"])
+        pc = pinecone.Pinecone(api_key=st.secrets["PINECONE_API_KEY"])
+        self.index = pc.Index(st.secrets["PINECONE_INDEX"])
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         self.df = None
         self.meta_cols = None
