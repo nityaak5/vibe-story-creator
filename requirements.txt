@@ -4,4 +4,4 @@ sentence-transformers
 streamlit
 huggingface_hub
 openpyxl
-pinecone-client
+pinecone
