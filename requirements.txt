@@ -4,4 +4,6 @@ sentence-transformers
 streamlit
 huggingface_hub
 openpyxl
-pinecone
+qdrant-client
+requests
+Pillow
