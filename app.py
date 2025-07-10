@@ -1,7 +1,7 @@
 # To run: streamlit run app.py
 import streamlit as st
 import pandas as pd
-from vector_store import ChromaDBVectorStore
+from vector_store_pinecone import PineconeVectorStore
 from story_synthesizer import StorySynthesizer
 from llm_groq import groq_llm
 from image_gen import generate_image
@@ -55,7 +55,7 @@ st.markdown(
 def load_vector_store():
     books_df = pd.read_excel("books.xlsx")
     meta_cols = ['Title', 'Genre', 'Description']
-    vector_store = ChromaDBVectorStore()
+    vector_store = PineconeVectorStore()
     vector_store.build(books_df, meta_cols, embedding_col='Description')
     return vector_store, books_df, meta_cols
 
@@ -121,7 +121,7 @@ if st.session_state.vibe:
         if st.button("Generate Image Inspiration"):
             with st.spinner("Generating image..."):
                 if isinstance(blueprint, dict) and 'setting' in blueprint and 'themes' in blueprint:
-                    img_prompt = f"{blueprint['setting']}. {', '.join(blueprint['themes'])}. Anime style, beautiful detailed background, no people, no faces."
+                    img_prompt = f"{blueprint['setting']}. {', '.join(blueprint['themes'])}. Beautiful, detailed environment, no people, no faces."
                 else:
                     img_prompt = str(blueprint)[:300]
                 st.session_state.image_obj = generate_image(img_prompt)
